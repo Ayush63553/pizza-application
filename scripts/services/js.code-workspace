@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../js"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../c++"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "SHOPPING_PIZZA_APP"
+	}
+}
