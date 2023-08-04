@@ -106,23 +106,27 @@ function printBasket() {
     basket.innerHTML='';
     for (let product of cartProducts){
         const li=document.createElement('li')
-        li.innerText=`${product.name} ${product.price}`
+        li.innerText=`${product.name}: Rs.${product.price}`
         li.className="alert alert-light"
         li.style="width:20rem"
         basket.appendChild(li);
     }    
     const Total=document.createElement('div')
-    Total.innerText=`Taxes=${getTotal().gst}
-    Total=${getTotal().Total}`
+    Total.className="alert alert-success text-center";
+    Total.innerText=`Taxes=Rs. ${getTotal().gst}
+    Total= Rs.${getTotal().Total}`
     basket.appendChild(Total)
 }
 function getTotal() {
     const Items= productOperations.getProductsInCart();
-    const Total= Items.reduce((sum,item)=>{return sum+item.price},0);
-    const gst=Total*0.18
-    // Total=Total+gst;
-
-    return {Total,gst};
+    let Total= Items.reduce((sum,item)=>{return sum+item.price},0);
+    let gst=Total*0.18
+    Total=Total*1.18
+    gst=Math.round(gst)
+    Total=Math.round(Total)
+    if(Items.length){
+        return {Total,gst};
+    }
 }
 
 function preparePizzaCard(pizza) {
